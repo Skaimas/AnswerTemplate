@@ -13,4 +13,7 @@ while money_capital >= 0:
         money_capital = money_capital - spend + salary
         amount_month += 1
 
+    if money_capital < 0:
+        amount_month -= 1
+
 print(f"Количество месяцев без долгов = {amount_month}")
