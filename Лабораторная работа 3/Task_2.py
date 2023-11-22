@@ -1,22 +1,31 @@
 import numpy as np
 
 
-def find_common_participants(list1, list2):
-    mid_group = np.array([])
-    for i in range(len(list1)):
-        for j in range(len(list2)):
-            if list1[i] == list2[j]:
-                mid_group = np.append(mid_group, list1[i])
-
-    mid_group = sorted(mid_group)
-
-    for i in range(len(mid_group)):
-        print(mid_group[i], end="")
-        if i + 1 != len(mid_group):
-            print(",", end="")
+def find_common_participants(str1, str2, sep_=","):
+    st1 = srtok(str1)
+    st2 = srtok(str2)
+    s = np.array([])
+    for i in st1:
+        for j in st2:
+            if i == j:
+                s = np.append(s, i)
+    print(sorted(s))
 
 
-group1 = np.array(["Петров", "Устинов", "Яковлева", "Баранов", "Макеева"])
-group2 = np.array(["Макеева", "Борисов", "Горохов", "Баранов", "Иванов", "Яковлева", "Козлов"])
+def srtok(str):
+    s = np.array([])
+    s1 = ""
+    for i in str:
+        if not i == '|':
+            s1 += i
+        else:
+            s = np.append(s, s1)
+            s1 = ""
+    s = np.append(s, s1)
+    return s
 
-find_common_participants(group1, group2)
+
+participants_first_group = "Сидоров|Петров|Иванов"
+participants_second_group = "Петров|Сидоров|Смирнов"
+
+find_common_participants(participants_first_group, participants_second_group, ";")
