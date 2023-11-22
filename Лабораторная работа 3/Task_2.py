@@ -9,7 +9,8 @@ def find_common_participants(str1, str2, sep_=","):
         for j in st2:
             if i == j:
                 s = np.append(s, i)
-    print(sorted(s))
+    s = sorted(s)
+    print(*s, sep=sep_)
 
 
 def srtok(str):
